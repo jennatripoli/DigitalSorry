@@ -1,0 +1,7 @@
+#BlueJ class context
+comment0.target=ButtonRectangle
+comment0.text=\n\ ButtonRectangle\ actor.\n\ @author\ Jenna\ Tripoli\n
+comment1.params=fileName
+comment1.target=ButtonRectangle(java.lang.String)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ ButtonRectangle.\n
+numComments=2

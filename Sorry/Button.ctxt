@@ -1,12 +1,13 @@
 #BlueJ class context
 comment0.target=Button
-comment0.text=\n\ Button\ actor.\n\ \n\ @author\ Jenna\ Tripoli\ \n\ @version\ 6/7/19\n
-comment1.params=fileName
-comment1.target=Button(java.lang.String)
+comment0.text=\n\ Button\ actor.\n\ @author\ Jenna\ Tripoli\ \n
+comment1.params=fileName\ x\ y
+comment1.target=Button(java.lang.String,\ int,\ int)
 comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Button.\n
 comment2.params=
-comment2.target=void\ act()
-comment2.text=\n\ Act\ -\ do\ whatever\ the\ Button\ wants\ to\ do.\ This\ method\ is\ called\ whenever\n\ the\ 'Act'\ or\ 'Run'\ button\ gets\ pressed\ in\ the\ environment.\n
-comment3.params=
-comment3.target=void\ changeSize()
+comment2.target=void\ changeSize()
+comment2.text=\n\ Changes\ the\ size\ of\ the\ button\ for\ a\ small\ amount\ of\ time.\n
+comment3.params=x\ y\ xChange\ yChange
+comment3.target=void\ setScale(int,\ int,\ int,\ int)
+comment3.text=\n\ Sets\ the\ scale\ of\ the\ button.\n\ @param\ x\ normal\ scale\ of\ x.\n\ @param\ y\ normal\ scale\ of\ y.\n\ @param\ xChange\ changed\ scale\ of\ x.\n\ @param\ yChange\ changed\ scale\ of\ y.\n
 numComments=4
