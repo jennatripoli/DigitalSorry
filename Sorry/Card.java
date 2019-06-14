@@ -8,6 +8,7 @@ public class Card extends Actor {
     /**
      * Constructor for objects of class Card.
      * Set the image of the card and the scale.
+     * @param fileName name of image file.
      */
     public Card(String fileName) {
         setImage(new GreenfootImage(fileName));

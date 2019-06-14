@@ -51,33 +51,36 @@ public class Board extends World {
      * Once the first player gets to their end, stop the game and display the end screen.
      */
     public void act() {
-        while(playGame) {
+        congrats = new Image("CongratsRed.png", 4, 3);
+        congrats.enlargeImage();
+        if(playGame) {
             pauseGame();
             if (drawCard() && !moveToStart()) moveGamePiece();
             if (currentPlayer.equals("red") && red.isAtEnd()) {
                 playGame = false;
-                congrats = new Image("CongratsRed.png", 1000, 750);
+                congrats = new Image("CongratsRed.png", 4, 3);
             }
             else if (currentPlayer.equals("blue") && blue.isAtEnd()) {
                 playGame = false;
-                congrats = new Image("CongratsBlue.png", 1000, 750);
+                congrats = new Image("CongratsBlue.png", 4, 3);
             }
             else if (currentPlayer.equals("yellow") && yellow.isAtEnd()) {
                 playGame = false;
-                congrats = new Image("CongratsYellow.png", 1000, 750);
+                congrats = new Image("CongratsYellow.png", 4, 3);
             }
             else if (currentPlayer.equals("green") && green.isAtEnd()) {
                 playGame = false;
-                congrats = new Image("CongratsGreen.png", 1000, 750);
+                congrats = new Image("CongratsGreen.png", 4, 3);
             }
             changePlayer();
-        }
-        addObject(congrats, 500, -750);
-        congrats.moveImage("down");
-        addObject(buttonReturnToTitle, 500, 500);
-        if (Greenfoot.mouseClicked(buttonReturnToTitle)) {
-            buttonReturnToTitle.changeSize();
-            Greenfoot.setWorld(new Title());
+        } else {
+            addObject(congrats, 500, 0);
+            congrats.enlargeImage();
+            addObject(buttonReturnToTitle, 500, 500);
+            if (Greenfoot.mouseClicked(buttonReturnToTitle)) {
+                buttonReturnToTitle.changeSize();
+                Greenfoot.setWorld(new Title());
+            }
         }
     }
             

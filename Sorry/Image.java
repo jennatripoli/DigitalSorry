@@ -8,6 +8,9 @@ public class Image extends Actor {
     /**
      * Constructor for objects of class Image.
      * Set the image and the scale.
+     * @param fileName name of image file.
+     * @param x length of image.
+     * @param y height of image.
      */
     public Image(String fileName, int x, int y) {
         setImage(fileName);
@@ -39,6 +42,15 @@ public class Image extends Actor {
                 setLocation(getX() - 6, 375);
                 Greenfoot.delay(1);
             } 
+        }
+    }
+    
+    /**
+     * Englarge image until it fills the world.
+     */
+    public void enlargeImage() {
+        while(getImage().getWidth() < 1000) {
+            getImage().scale((int)(getImage().getWidth() * (4.0/3.0)), (int)(getImage().getHeight() * (4.0/3.0)));
         }
     }
 }

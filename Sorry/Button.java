@@ -10,6 +10,9 @@ public class Button extends Actor {
     /**
      * Constructor for objects of class Button.
      * Set the image of the card and the scale and initialize instance variables.
+     * @param fileName name of image file.
+     * @param x length of button.
+     * @param y height of button.
      */
     public Button(String fileName, int x, int y) {
         setImage(new GreenfootImage(fileName));

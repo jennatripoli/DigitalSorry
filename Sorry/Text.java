@@ -12,6 +12,8 @@ public class Text extends Actor {
     /**
      * Constructor for objects of class Text.
      * Initialize instance variables and update the text.
+     * @param text content of the text.
+     * @param size size of text.
      */
     public Text(String text, int size) {
         this.text = text;

@@ -10,6 +10,7 @@ public class GamePiece extends Actor {
     /**
      * Constructor for objects of class GamePiece.
      * Set the image of the piece and the scale.
+     * @param fileName name of image file.
      */
     public GamePiece(String fileName) {
         setImage(new GreenfootImage(fileName));
