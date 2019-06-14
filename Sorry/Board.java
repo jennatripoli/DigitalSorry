@@ -15,17 +15,18 @@ public class Board extends World {
     private Image congrats;
             
     /**
-     * Constructor for objects of class SorryBoard.
+     * Constructor for objects of class Board.
+     * Initialize instance variables and add them to the world.
      */
-    public Board() {    
+    public Board() {
         super(1000, 750, 1);
         
         this.drawnCard = new CardFront();
         this.prevDrawnCard = new CardFront();
         this.backCard = new CardBack();
         this.totalDrawn = 0;
-        this.buttonDrawCard = new ButtonRectangle("ButtonDrawCard.png");
-        this.buttonPauseGame = new ButtonRectangle("ButtonPauseGame.png");
+        this.buttonDrawCard = new ButtonCircle("ButtonDrawCard.png");
+        this.buttonPauseGame = new ButtonCircle("ButtonPauseGame.png");
         this.buttonReturnToTitle = new ButtonRectangle("ButtonReturnToTitle.png");
         this.red = new GamePieceRed();
         this.blue = new GamePieceBlue();
@@ -43,6 +44,12 @@ public class Board extends World {
         addObject(green, 253, 522);
     }
     
+    /**
+     * When the game is happening, go through the steps of a turn.
+     * If the current game piece is at its respective end entrance,
+     * that piece has the ability to enter the path to the end.
+     * Once the first player gets to their end, stop the game and display the end screen.
+     */
     public void act() {
         while(playGame) {
             pauseGame();
@@ -141,8 +148,7 @@ public class Board extends World {
     }
     
     /**
-     * Moved the current player's game piece a certain number of spaces
-     * based on the value of the card they drew.
+     * Moves current game piece a certain number of spaces based on the value of the card they drew.
      */
     public void moveGamePiece() {
         for (int i = 0; i < drawValue; i++) {
@@ -188,7 +194,7 @@ public class Board extends World {
     }
     
     /**
-     * Pause the current game.
+     * Pause the current game when the Pause Game button is clicked.
      */
     public void pauseGame() {
         if (Greenfoot.mouseClicked(buttonPauseGame)) {

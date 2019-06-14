@@ -3,5 +3,5 @@ comment0.target=CardFront
 comment0.text=\n\ CardFront\ actor.\n\ @author\ Jenna\ Tripoli\n
 comment1.params=
 comment1.target=CardFront()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ SorryCardFront.\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ CardFront.\n\ Set\ the\ image\ of\ the\ card.\n
 numComments=2

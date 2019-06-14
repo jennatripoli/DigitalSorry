@@ -7,7 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class GamePieceBlue extends GamePiece {
     /**
      * Constructor for objects of class GamePieceBlue.
-     * Sets the image, start position, and home position.
+     * Set the image, start, home, end entrance, and end.
      */
     public GamePieceBlue() {
         super("GamePieceBlue.png");

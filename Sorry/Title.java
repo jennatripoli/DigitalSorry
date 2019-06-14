@@ -9,6 +9,7 @@ public class Title extends World {
     
     /**
      * Constructor for objects of class Title.
+     * Initialize instance variables and add them to the world.
      */
     public Title() {    
         super(1000, 750, 1); 
@@ -18,6 +19,10 @@ public class Title extends World {
         addObject(buttonBeginGame, 715, 598);
     }
     
+    /**
+     * Go to the instructions screen if Instructions button is clicked.
+     * Go to game if Begin Game button is clicked.
+     */
     public void act() {
         if (Greenfoot.mouseClicked(buttonInstructions)) {
             buttonInstructions.changeSize();

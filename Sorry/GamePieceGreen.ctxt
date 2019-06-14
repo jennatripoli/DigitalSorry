@@ -3,5 +3,5 @@ comment0.target=GamePieceGreen
 comment0.text=\n\ GamePieceGreen\ actor.\n\ @author\ Jenna\ Tripoli\n
 comment1.params=
 comment1.target=GamePieceGreen()
-comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GamePieceGreen.\n\ Sets\ the\ image,\ start\ position,\ and\ home\ position.\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ GamePieceGreen.\n\ Set\ the\ image,\ start,\ home,\ end\ entrance,\ and\ end.\n
 numComments=2

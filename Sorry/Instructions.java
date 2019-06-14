@@ -9,13 +9,17 @@ public class Instructions extends World {
     
     /**
      * Constructor for objects of class Instructions.
+     * Initialize instance variable and add it to the world.
      */
     public Instructions() {    
         super(1000, 750, 1); 
-        this.buttonReturnToTitle = new ButtonRectangle("ButtonReturnToTitle.png");
+        this.buttonReturnToTitle = new ButtonRectangle("ButtonReturnToTitle.png");   
         addObject(buttonReturnToTitle, 500, 695);
     }
     
+    /**
+     * Go to the title screen if the Return to Title button is clicked.
+     */
     public void act() {
         if (Greenfoot.mouseClicked(buttonReturnToTitle)) {
             buttonReturnToTitle.changeSize();

@@ -9,27 +9,48 @@ public class GamePiece extends Actor {
     
     /**
      * Constructor for objects of class GamePiece.
+     * Set the image of the piece and the scale.
      */
     public GamePiece(String fileName) {
         setImage(new GreenfootImage(fileName));
         getImage().scale(35, 35);
     }
     
+    /**
+     * Set the start location of the piece.
+     * @param x x-position of start.
+     * @param y y-position of start.
+     */
     public void setStart(int x, int y) { 
         this.xStart = x; 
         this.yStart = y;
     }
     
+    /**
+     * Set the home location of the piece.
+     * @param x x-position of home.
+     * @param y y-position of home.
+     */
     public void setHome(int x, int y) {
         this.xHome = x;
         this.yHome = y;
     }
     
+    /**
+     * Set the end entrance location of the piece.
+     * @param x x-position of end entrance
+     * @param y y-position of end entrance
+     */
     public void setEndEntrance(int x, int y) {
         this.xEndEntrance = x;
         this.yEndEntrance = y;
     }
     
+    /**
+     * Set the end location of the piece.
+     * @param x x-position of end
+     * @param y y-position of end
+     */
     public void setEnd(int x, int y) {
         this.xEnd = x;
         this.yEnd = y;
@@ -42,6 +63,9 @@ public class GamePiece extends Actor {
     public int getEndX() { return this.xEnd; }
     public int getEndY() { return this.yEnd; }
     
+    /**
+     * Move the piece around the board and to its end location.
+     */
     public void moveGamePiece() {
         if (xEndEntrance == 264 && yEndEntrance == 56 && getX() >= 248 && getX() <= 272 && getY() >= 48 && getY() <= 64) setLocation(264, 56 + 42);
         else if (xEndEntrance == 818 && yEndEntrance == 140 && getX() >= 800 && getX() <= 826 && getY() >= 132 && getY() <= 148) setLocation(818 - 42, 140);
@@ -84,26 +108,47 @@ public class GamePiece extends Actor {
         else if (getX() >= 810 && getX() <= 824 && getY() > 56 && getY() < 694) setLocation(getX(), getY() + 42);
     }
     
+    /**
+     * Move the piece to its start position.
+     */
     public void moveToStart() {
         setLocation(xStart, yStart);
     }
     
+    /**
+     * Move the piece to its home position.
+     */
     public void moveToHome() {
         setLocation(xHome, yHome);
     }
     
+    /**
+     * Check if the piece is intersecting any other pieces.
+     * @return true if there is intersection, false if there is not intersection.
+     */
     public boolean isIntersectingGamePiece() {
         return isTouching(null);
     }
     
+    /**
+     * Find the piece that is intersecting the current piece.
+     * @return GamePiece actor that is intersecting the current piece.
+     */
     public GamePiece getIntersectingGamePiece() {
         return (GamePiece)getOneIntersectingObject(GamePiece.class);
     }
     
+    /**
+     * Move the piece that is intersecting the current piece back to home.
+     */
     public void moveIntersectingGamePiece() {
         getIntersectingGamePiece().moveToHome();
     }
     
+    /**
+     * Check if the piece is at its end position.
+     * @return true if piece is at end position, false if piece is not at end position.
+     */
     public boolean isAtEnd() {
         if (getX() == xEnd && getY() == yEnd) return true;
         else return false;

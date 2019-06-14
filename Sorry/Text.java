@@ -11,6 +11,7 @@ public class Text extends Actor {
 
     /**
      * Constructor for objects of class Text.
+     * Initialize instance variables and update the text.
      */
     public Text(String text, int size) {
         this.text = text;
@@ -18,7 +19,7 @@ public class Text extends Actor {
         this.outline = Color.BLACK;
         this.foreground = Color.WHITE;
         this.background = new Color(0, 0, 0, 0);
-        updateImage();
+        updateText();
     }
     
     /**
@@ -27,7 +28,7 @@ public class Text extends Actor {
      */
     public void changeText(String text) {
         this.text = text;
-        updateImage();
+        updateText();
     }
     
     /**
@@ -36,13 +37,13 @@ public class Text extends Actor {
      */
     public void changeSize(int size) {
         this.size = size;
-        updateImage();
+        updateText();
     }
 
     /**
      * Update the text with current values.
      */
-    private void updateImage() {
+    private void updateText() {
         setImage(new GreenfootImage(text, size, foreground, background, outline));
     }
 }

@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Image extends Actor {
     /**
      * Constructor for objects of class Image.
+     * Set the image and the scale.
      */
     public Image(String fileName, int x, int y) {
         setImage(fileName);
@@ -14,8 +15,8 @@ public class Image extends Actor {
     }
     
     /**
-     * Moves actor to the center of the world.
-     * @param direction direction to move image.
+     * Move the image to the center of the world.
+     * @param direction "down", "up", "right", or "left"
      */
     public void moveImage(String direction) {
         if (direction.equals("down")) {

@@ -10,20 +10,24 @@ public class Paused extends World {
     
     /**
      * Constructor for objects of class Paused.
+     * Initialize instance variables and add them to the world.
      */
     public Paused(Board prevBoard) {    
         super(1000, 750, 1); 
-        
         this.buttonResume = new ButtonRectangle("ButtonResume.png");
         this.buttonReturnToTitle = new ButtonRectangle("ButtonReturnToTitle.png");
         this.buttonRestart = new ButtonRectangle("ButtonRestart.png");
         this.prevBoard = prevBoard;
-        
         addObject(buttonResume, 175, 598);
         addObject(buttonReturnToTitle, 500, 598);
         addObject(buttonRestart, 825, 598);
     }
     
+    /**
+     * Go back to game if Resume button is clicked.
+     * Go to the title screen if the Return to Title button is clicked.
+     * Go to new game if Restart button is clicked.
+     */
     public void act() {
         if (Greenfoot.mouseClicked(buttonResume)) {
             buttonResume.changeSize();
