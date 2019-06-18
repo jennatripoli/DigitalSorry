@@ -14,9 +14,7 @@ public class End extends World {
     public End(String fileName) {    
         super(1000, 750, 1);
         setBackground(fileName);
-        
         this.buttonReturnToTitle = new ButtonRectangle("ButtonReturnToTitle.png");
-        
         addObject(buttonReturnToTitle, 500, 500);
     }
     
@@ -26,6 +24,7 @@ public class End extends World {
     public void act() {
         if (Greenfoot.mouseClicked(buttonReturnToTitle)) {
             buttonReturnToTitle.decreaseSize();
+            buttonReturnToTitle.playClickSound();
             Greenfoot.setWorld(new Title());
         }
     }

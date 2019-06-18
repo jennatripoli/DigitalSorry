@@ -31,14 +31,17 @@ public class Paused extends World {
     public void act() {
         if (Greenfoot.mouseClicked(buttonResume)) {
             buttonResume.decreaseSize();
+            buttonResume.playClickSound();
             Greenfoot.delay(5);
             Greenfoot.setWorld(prevBoard);
         } else if (Greenfoot.mouseClicked(buttonReturnToTitle)) {
             buttonReturnToTitle.decreaseSize();
+            buttonReturnToTitle.playClickSound();
             Greenfoot.delay(5);
             Greenfoot.setWorld(new Title());
         } else if (Greenfoot.mouseClicked(buttonRestart)) {
             buttonRestart.decreaseSize();
+            buttonRestart.playClickSound();
             Greenfoot.delay(5);
             Greenfoot.setWorld(new Board());
         }

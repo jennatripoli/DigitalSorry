@@ -53,7 +53,19 @@ public class Image extends Actor {
     public void enlargeImage(int x, int y) {
         while(getImage().getWidth() < x && getImage().getHeight() < y) {
             getImage().scale((int)(getImage().getWidth() + x * 0.1), (int)(getImage().getHeight() + y * 0.1));
-            Greenfoot.delay(1);
+            Greenfoot.delay(3);
+        }
+    }
+    
+    /**
+     * Reduce the image until it is a certain size.
+     * @param x full width.
+     * @param y full height.
+     */
+    public void reduceImage(int x, int y) {
+        while(getImage().getWidth() > x && getImage().getHeight() > y) {
+            getImage().scale((int)(getImage().getWidth() - x * 0.1), (int)(getImage().getHeight() - y * 0.1));
+            Greenfoot.delay(3);
         }
     }
 }

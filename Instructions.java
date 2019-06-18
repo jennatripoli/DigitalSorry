@@ -23,6 +23,7 @@ public class Instructions extends World {
     public void act() {
         if (Greenfoot.mouseClicked(buttonReturnToTitle)) {
             buttonReturnToTitle.decreaseSize();
+            buttonReturnToTitle.playClickSound();
             Greenfoot.delay(5);
             Greenfoot.setWorld(new Title());
         }

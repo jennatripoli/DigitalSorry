@@ -6,10 +6,11 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Button extends Actor {
     private int x, y;
+    private GreenfootSound buttonClick;
     
     /**
      * Constructor for objects of class Button.
-     * Set the image of the card and the scale and initialize instance variables.
+     * Set the image and scale of the card and initialize instance variables.
      * @param fileName name of image file.
      * @param x width of button.
      * @param y height of button.
@@ -19,6 +20,7 @@ public class Button extends Actor {
         getImage().scale(x, y);
         this.x = x;
         this.y = y;
+        this.buttonClick = new GreenfootSound("ButtonClick.mp3");
     } 
     
     /**
@@ -37,5 +39,12 @@ public class Button extends Actor {
         getImage().scale((int)(x * 0.8), (int)(y * 0.8));
         Greenfoot.delay(15);
         getImage().scale(x, y);
+    }
+    
+    /**
+     * Play sound to indicate button was clicked.
+     */
+    public void playClickSound() {
+        buttonClick.play();
     }
 }

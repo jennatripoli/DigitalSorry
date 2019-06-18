@@ -8,10 +8,12 @@ public class Board extends World {
     private Card drawnCard, prevDrawnCard, backCard;
     private int drawValue, totalDrawn;
     private Text drawnValue, prevDrawnValue;
-    private Button buttonDrawCard, buttonPauseGame, buttonReturnToTitle;
+    private Button buttonDrawCard, buttonPauseGame;
     private GamePiece red, blue, yellow, green;
     private String currentPlayer;
     private Image intersection;
+    private GreenfootSound congrats;
+    private int i = 0;
             
     /**
      * Constructor for objects of class Board.
@@ -19,7 +21,6 @@ public class Board extends World {
      */
     public Board() {
         super(1000, 750, 1);
-        
         this.drawnCard = new CardFront();
         this.prevDrawnCard = new CardFront();
         this.backCard = new CardBack();
@@ -31,7 +32,7 @@ public class Board extends World {
         this.yellow = new GamePieceYellow();
         this.green = new GamePieceGreen();
         this.currentPlayer = "red";
-        
+        this.congrats = new GreenfootSound("Congrats.mp3");
         addObject(buttonDrawCard, 75, 85);
         addObject(buttonPauseGame, 925, 85);
         addObject(backCard, 75, 245);
@@ -51,10 +52,19 @@ public class Board extends World {
         pauseGame();
         if (drawCard() && !moveToStart()) {
             moveGamePiece();
-            if (currentPlayer.equals("red") && red.isAtEnd()) Greenfoot.setWorld(new End("CongratsRed.png"));
-            else if (currentPlayer.equals("blue") && blue.isAtEnd()) Greenfoot.setWorld(new End("CongratsBlue.png"));
-            else if (currentPlayer.equals("yellow") && yellow.isAtEnd()) Greenfoot.setWorld(new End("CongratsYellow.png"));
-            else if (currentPlayer.equals("green") && green.isAtEnd()) Greenfoot.setWorld(new End("CongratsGreen.png"));
+            if (currentPlayer.equals("red") && red.isAtEnd()) {
+                congrats.play();
+                Greenfoot.setWorld(new End("CongratsRed.png"));
+            } else if (currentPlayer.equals("blue") && blue.isAtEnd()) {
+                congrats.play();
+                Greenfoot.setWorld(new End("CongratsBlue.png"));
+            } else if (currentPlayer.equals("yellow") && yellow.isAtEnd()) {
+                congrats.play();
+                Greenfoot.setWorld(new End("CongratsYellow.png"));
+            } else if (currentPlayer.equals("green") && green.isAtEnd()) {
+                congrats.play();
+                Greenfoot.setWorld(new End("CongratsGreen.png"));
+            }
             changePlayer();
         }
     }
@@ -67,6 +77,7 @@ public class Board extends World {
     public boolean drawCard() {
         if (Greenfoot.mouseClicked(buttonDrawCard) || Greenfoot.isKeyDown("space")) {
             buttonDrawCard.increaseSize();
+            buttonDrawCard.playClickSound();
             if (totalDrawn == 0) {
                 randomizeDrawValue();
                 addObject(drawnCard, 75, 245);
@@ -128,7 +139,7 @@ public class Board extends World {
     /**
      * Moves current game piece a certain number of spaces based on the value of the card they drew.
      */
-    public void moveGamePiece() {
+   public void moveGamePiece() {
         for (int i = 0; i < drawValue; i++) {
             if (currentPlayer.equals("red")) {
                 red.moveGamePiece();
@@ -144,57 +155,72 @@ public class Board extends World {
                 if (green.getX() != green.getHomeX() && green.getY() != green.getHomeY()) Greenfoot.delay(20);
             }
         }
-        checkForIntersctingGamePiece();
+        checkForIntersectingGamePiece();
     }
     
     /**
      * Checks for a game piece already in the desired location and
      * sends the piece back to its home if it exists.
      */
-    public void checkForIntersctingGamePiece() {
+    public void checkForIntersectingGamePiece() {
+        String color = "";
         if (currentPlayer.equals("red") && red.isIntersectingGamePiece()) {
-            if (red.getIntersectingGamePiece() == blue) intersection = new Image("SorryBlue.png", 46, 11);
-            else if (red.getIntersectingGamePiece() == yellow) intersection = new Image("SorryYellow.png", 46, 11);
-            else if (red.getIntersectingGamePiece() == green) intersection = new Image("SorryGreen.png", 46, 11);
+            if (red.getIntersectingGamePiece() == blue) color = "blue";
+            else if (red.getIntersectingGamePiece() == yellow) color = "yellow";
+            else if (red.getIntersectingGamePiece() == green) color = "green";
             red.moveIntersectingGamePiece();
-            addObject(intersection, 500, 375);
-            intersection.enlargeImage(460, 110);
-            removeObject(intersection);
-            addObject(intersection, 500, 375);
-            Greenfoot.delay(150);
-            removeObject(intersection);
         } else if (currentPlayer.equals("blue") && blue.isIntersectingGamePiece()) {
-            if (blue.getIntersectingGamePiece() == red) intersection = new Image("SorryRed.png", 46, 11);
-            else if (blue.getIntersectingGamePiece() == yellow) intersection = new Image("SorryYellow.png", 46, 11);
-            else if (blue.getIntersectingGamePiece() == green) intersection = new Image("SorryGreen.png", 46, 11);
+            if (blue.getIntersectingGamePiece() == red) color = "red";
+            else if (blue.getIntersectingGamePiece() == yellow) color = "yellow";
+            else if (blue.getIntersectingGamePiece() == green) color = "green";
             blue.moveIntersectingGamePiece();
-            addObject(intersection, 500, 375);
-            intersection.enlargeImage(458, 110);
-            removeObject(intersection);
-            addObject(intersection, 500, 375);
-            Greenfoot.delay(150);
-            removeObject(intersection);
         } else if (currentPlayer.equals("yellow") && yellow.isIntersectingGamePiece()) {
-            if (yellow.getIntersectingGamePiece() == red) intersection = new Image("SorryRed.png", 46, 11);
-            else if (yellow.getIntersectingGamePiece() == blue) intersection = new Image("SorryBlue.png", 46, 11);
-            else if (yellow.getIntersectingGamePiece() == green) intersection = new Image("SorryGreen.png", 46, 11);
+            if (yellow.getIntersectingGamePiece() == red) color = "red";
+            else if (yellow.getIntersectingGamePiece() == blue) color = "blue";
+            else if (yellow.getIntersectingGamePiece() == green) color = "green";
             yellow.moveIntersectingGamePiece();
-            addObject(intersection, 500, 375);
-            intersection.enlargeImage(458, 110);
-            removeObject(intersection);
-            addObject(intersection, 500, 375);
-            Greenfoot.delay(150);
-            removeObject(intersection);
         } else if (currentPlayer.equals("green") && green.isIntersectingGamePiece()) {
-            if (green.getIntersectingGamePiece() == red) intersection = new Image("SorryRed.png", 46, 11);
-            else if (green.getIntersectingGamePiece() == blue) intersection = new Image("SorryBlue.png", 46, 11);
-            else if (green.getIntersectingGamePiece() == yellow) intersection = new Image("SorryYellow.png", 46, 11);
+            if (green.getIntersectingGamePiece() == red) color = "red";
+            else if (green.getIntersectingGamePiece() == blue) color = "blue";
+            else if (green.getIntersectingGamePiece() == yellow) color = "yellow";
             green.moveIntersectingGamePiece();
+        }
+        
+        if (color.equals("red")) {
+            intersection = new Image("SorryRed.png", 1380, 330);
             addObject(intersection, 500, 375);
-            intersection.enlargeImage(458, 110);
+            intersection.reduceImage(460, 110);
             removeObject(intersection);
+            intersection = new Image("SorryRed.png", 460, 110);
             addObject(intersection, 500, 375);
-            Greenfoot.delay(150);
+            Greenfoot.delay(180);
+            removeObject(intersection);
+        } else if (color.equals("blue")) {
+            intersection = new Image("SorryBlue.png", 1380, 330);
+            addObject(intersection, 500, 375);
+            intersection.reduceImage(460, 110);
+            removeObject(intersection);
+            intersection = new Image("SorryBlue.png", 460, 110);
+            addObject(intersection, 500, 375);
+            Greenfoot.delay(180);
+            removeObject(intersection);
+        } else if (color.equals("yellow")) {
+            intersection = new Image("SorryYellow.png", 1380, 330);
+            addObject(intersection, 500, 375);
+            intersection.reduceImage(460, 110);
+            removeObject(intersection);
+            intersection = new Image("SorryYellow.png", 460, 110);
+            addObject(intersection, 500, 375);
+            Greenfoot.delay(180);
+            removeObject(intersection);
+        } else if (color.equals("green")) {
+            intersection = new Image("SorryGreen.png", 1380, 330);
+            addObject(intersection, 500, 375);
+            intersection.reduceImage(460, 110);
+            removeObject(intersection);
+            intersection = new Image("SorryGreen.png", 460, 110);
+            addObject(intersection, 500, 375);
+            Greenfoot.delay(180);
             removeObject(intersection);
         }
     }
@@ -215,6 +241,8 @@ public class Board extends World {
     public void pauseGame() {
         if (Greenfoot.mouseClicked(buttonPauseGame)) {
             buttonPauseGame.increaseSize();
+            buttonPauseGame.playClickSound();
+            Greenfoot.delay(5);
             Greenfoot.setWorld(new Paused(this));
         }
     }
