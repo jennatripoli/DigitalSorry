@@ -25,11 +25,11 @@ public class Title extends World {
      */
     public void act() {
         if (Greenfoot.mouseClicked(buttonInstructions)) {
-            buttonInstructions.changeSize();
+            buttonInstructions.increaseSize();
             Greenfoot.delay(5);
             Greenfoot.setWorld(new Instructions());
         } else if (Greenfoot.mouseClicked(buttonBeginGame)) {
-            buttonBeginGame.changeSize();
+            buttonBeginGame.increaseSize();
             Greenfoot.delay(5);
             Greenfoot.setWorld(new Board());
         }

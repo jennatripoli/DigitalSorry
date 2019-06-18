@@ -44,13 +44,16 @@ public class Image extends Actor {
             } 
         }
     }
-    
+
     /**
-     * Englarge image until it fills the world.
+     * Enlarge the image until it is a certain size.
+     * @param x full width.
+     * @param y full height.
      */
-    public void enlargeImage() {
-        while(getImage().getWidth() < 1000) {
-            getImage().scale((int)(getImage().getWidth() * (4.0/3.0)), (int)(getImage().getHeight() * (4.0/3.0)));
+    public void enlargeImage(int x, int y) {
+        while(getImage().getWidth() < x && getImage().getHeight() < y) {
+            getImage().scale((int)(getImage().getWidth() + x * 0.1), (int)(getImage().getHeight() + y * 0.1));
+            Greenfoot.delay(1);
         }
     }
 }

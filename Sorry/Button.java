@@ -5,42 +5,37 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author Jenna Tripoli 
  */
 public class Button extends Actor {
-    private int xScale, yScale, xChangeScale, yChangeScale;
+    private int x, y;
     
     /**
      * Constructor for objects of class Button.
      * Set the image of the card and the scale and initialize instance variables.
      * @param fileName name of image file.
-     * @param x length of button.
+     * @param x width of button.
      * @param y height of button.
      */
     public Button(String fileName, int x, int y) {
         setImage(new GreenfootImage(fileName));
-        this.xScale = x;
-        this.yScale = y;
-        getImage().scale(xScale, yScale);
+        getImage().scale(x, y);
+        this.x = x;
+        this.y = y;
     } 
     
     /**
-     * Changes the size of the button for a small amount of time.
+     * Increases the size of the button for a small amount of time.
      */
-    public void changeSize() {
-        getImage().scale(xChangeScale, yChangeScale);
+    public void increaseSize() {
+        getImage().scale((int)(x * 1.2), (int)(y * 1.2));
         Greenfoot.delay(15);
-        getImage().scale(xScale, yScale);
+        getImage().scale(x, y);
     }
     
     /**
-     * Sets the scale of the button.
-     * @param x normal scale of x.
-     * @param y normal scale of y.
-     * @param xChange changed scale of x.
-     * @param yChange changed scale of y.
+     * Decreases the size of the button for a small amount of time.
      */
-    public void setScale(int x, int y, int xChange, int yChange) {
-        this.xScale = x;
-        this.yScale = y;
-        this.xChangeScale = xChange;
-        this.yChangeScale = yChange;
+    public void decreaseSize() {
+        getImage().scale((int)(x * 0.8), (int)(y * 0.8));
+        Greenfoot.delay(15);
+        getImage().scale(x, y);
     }
 }

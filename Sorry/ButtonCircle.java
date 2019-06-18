@@ -12,6 +12,5 @@ public class ButtonCircle extends Button {
      */
     public ButtonCircle(String fileName) {
         super(fileName, 120, 120);
-        super.setScale(120, 120, 100, 100);
     }   
 }

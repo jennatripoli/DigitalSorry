@@ -12,6 +12,5 @@ public class ButtonRectangle extends Button {
      */
     public ButtonRectangle(String fileName) {
         super(fileName, 305, 73);
-        super.setScale(305, 73, 366, 88);
     }   
 }
